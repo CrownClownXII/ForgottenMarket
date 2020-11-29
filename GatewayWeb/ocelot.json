@@ -1,0 +1,31 @@
+{
+    "Routes": [
+    	{
+			"UseServiceDiscovery": true,
+			"DownstreamPathTemplate": "/api/order",
+			"DownstreamScheme": "http",
+			"ServiceName": "orderService",
+			"UpstreamPathTemplate": "/api/gateway/order",
+			"UpstreamHttpMethod": [ "Get", "Post" ],
+            "ReRoutesCaseSensitive": false,
+            "DangerousAcceptAnyServerCertificateValidator": true
+		},
+		{
+			"UseServiceDiscovery": true,
+			"DownstreamPathTemplate": "/api/catalog/{anything}",
+			"DownstreamScheme": "http",
+			"ServiceName": "catalogService",
+			"UpstreamPathTemplate": "/api/gateway/catalog/{anything}",
+			"UpstreamHttpMethod": [ "Get", "Post" ],
+            "ReRoutesCaseSensitive": false,
+            "DangerousAcceptAnyServerCertificateValidator": true
+		}
+    ],
+	"GlobalConfiguration": {
+		"ServiceDiscoveryProvider": {
+			"Host": "consul",
+			"Port": 8500,
+			"Type": "Consul"
+		}
+	}
+}

@@ -1,0 +1,69 @@
+.eq-item {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.eq-item-board {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.eq-board {
+    display: grid;
+    grid-template-rows: 90px 180px 120px;
+    grid-template-columns: 70px 110px 70px;
+}
+
+
+.eq-type {
+    border: black 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h5 {
+        margin: 0;
+    }
+}
+
+.helmet {
+    @extend .eq-type; 
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.breastplate {
+    @extend .eq-type; 
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.weapon-a {
+    @extend .eq-type; 
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.weapon-b {
+    @extend .eq-type; 
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.boots {
+    @extend .eq-type; 
+    grid-column: 2;
+    grid-row: 3;
+}

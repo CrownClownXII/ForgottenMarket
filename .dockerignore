@@ -1,0 +1,9 @@
+.vscode
+.dockerignore
+.gitignore
+**/bin/
+**/obj/
+**/node_modules/
+**/bower_components/
+**/wwwroot/lib/
+docker-compose*.yml

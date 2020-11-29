@@ -1,0 +1,21 @@
+.action-btns {
+    display: flex;
+    
+    .action-btn {
+        margin-left: 20px;
+    }
+
+    & > .action-btn:first-child {
+        margin-left: 0;
+    }
+
+    .action-btn:hover {
+        color: rgb(207, 207, 207);
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
+
+    .settings-btn {
+        ;
+    }
+}

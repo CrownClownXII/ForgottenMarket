@@ -1,0 +1,66 @@
+version: '3.4'
+
+services:
+    postgres:
+        image: postgres
+        restart: always
+        environment:
+          POSTGRES_PASSWORD: qazwsx
+          POSTGRES_USERNAME: postgres
+        networks:
+            - consul-network
+
+    consul:
+        image: consul
+        container_name: consul
+        restart: on-failure
+        ports:
+            - "8500:8500"
+        networks:
+            - consul-network
+
+    gateway:
+        image: gateway-web
+        build:
+            context: .
+            dockerfile: GatewayWeb/Dockerfile
+        ports:
+            - "5005:80"
+        depends_on: 
+            - consul
+        networks:
+            - consul-network
+
+    catalog:
+        image: catalog-api
+        build:
+            context: .
+            dockerfile: CatalogAPI/Dockerfile
+        ports:
+            - "5006:80"
+        depends_on: 
+            - postgres
+            - consul
+            - gateway
+        networks:
+            - consul-network
+    
+    clientweb:
+        image: client-web
+        stdin_open: true 
+        build: 
+            context: .
+            dockerfile: clientweb/Dockerfile
+        ports:
+            - "5010:80"
+        networks: 
+            - consul-network
+        environment:
+            - NODE_ENV=development
+        volumes:
+            - '.:/app'
+            - '/app/node_modules'
+
+networks:
+    consul-network:
+        driver: bridge

@@ -1,0 +1,39 @@
+.drawer {
+    margin-top: 64px;
+    z-index: 2000 !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.drawer-open {
+    margin-top: 64px;
+    width: 240px;
+    transition: width 0.1s ease !important;
+}
+
+.drawer-close {
+    transition: width 0.1s ease !important;
+    overflow: hidden;
+    width: 60px;
+    margin-top: 64px; 
+}
+
+.paper {
+    margin-top: 64px;
+    width: 240px;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.arrow-icon {
+    font-size: 10px;
+}
